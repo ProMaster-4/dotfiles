@@ -22,10 +22,14 @@ curl -fsSL https://starship.rs/install.sh | bash
 echo "Cloning dotfiles repository..."
 git clone $DOTFILES_REPO $DOTFILES_DIR || { echo "Failed to clone dotfiles repository. Exiting..."; exit 1; }
 
+# Replace the hardcoded home directory in the config files
+echo "Replacing home directory in configuration files..."
+sed -i "s|/home/pro|$HOME|g" $DOTFILES_DIR/dotfiles/.config/nitrogen/bg-saved.cfg
+sed -i "s|/home/pro|$HOME|g" $DOTFILES_DIR/dotfiles/.config/nitrogen/nitrogen.cfg
+
 # Install dotfiles
 echo "Installing dotfiles..."
-cd $DOTFILES_DIR
+cd $DOTFILES_DIR/dotfiles
 ./install.sh || { echo "Failed to install dotfiles. Exiting..."; exit 1; }
 
 echo "Dotfiles installed successfully!"
-
