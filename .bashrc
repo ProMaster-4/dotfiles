@@ -8,6 +8,7 @@
 alias ls='ls --color=auto'
 alias ll='ls -al'
 alias cd='z'
+alias neofetch='fastfetch'
 alias grep='grep --color=auto'
 PS1='[\u@\h \W]\$ '
 
